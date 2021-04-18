@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import Quote from "./components/Quote";
 
@@ -11,6 +11,13 @@ const Button = styled.button`
   padding: 1rem 3rem;
   font-size: 2rem;
   border: 2px solid black;
+  transition: background-size .8s ease;
+
+  :hover {
+    cursor: pointer;
+    background-size: 400px;
+
+  }  
 `;
 
 const Container = styled.div`
@@ -29,6 +36,11 @@ function App() {
     const quote = await api.json();
     setQuote(quote[0]);
   }
+
+  useEffect( () => {
+    APIquery()
+  }, [])
+
   return (
     <Container>
       <Quote
