@@ -19,8 +19,10 @@ const Container = styled.div`
 `;
 
 function App() {
-  const APIquery = () => {
-    console.log("querying...")
+  const APIquery = async () => {
+    const api = await fetch("https://breaking-bad-quotes.herokuapp.com/v1/quotes");
+    const quote = await api.json();
+    console.log(quote);
   }
   return (
     <Container>
